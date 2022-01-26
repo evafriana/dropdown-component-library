@@ -1,17 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import Dropdown from "./lib/Dropdown";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+// const myFn = (e) => console.log(e);
+// const myData = [
+//   { value: 1, text: 1, name: 1 },
+//   { value: 2, text: 2, name: 2 },
+//   { value: 3, text: 3, name: 3 },
+// ];
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//  ReactDOM.render(
+//   <Dropdown onChange={myFn} options={myData} label="Address" option="All" />,
+//   document.getElementById("root")
+// );
+
+const myData = ["gajah", "burung", "buaya"];
+ReactDOM.render(<Dropdown options={myData} />, document.getElementById("root"));
