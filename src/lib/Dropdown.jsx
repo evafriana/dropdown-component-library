@@ -1,11 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
+import propTypes from "prop-types";
 import "./Dropdown.css";
 
 /**
  *
  * @param {string[]}  options - Return the options string in array
- * @param {string=} placeholder - Adding a placeholder (optional param)
+ * @param {string} placeholder - Adding a placeholder (optional param)
  * @param {number} width() - Returns the asset's intrinsic width in CSS pixels..
  * @returns JSX Element
  */
@@ -73,6 +74,11 @@ const Dropdown = ({
       )}
     </div>
   );
+};
+
+Dropdown.propTypes = {
+  options: propTypes.array.isRequired,
+  placeholder: propTypes.string,
 };
 
 export default Dropdown;
