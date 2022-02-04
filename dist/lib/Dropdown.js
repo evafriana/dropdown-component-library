@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import propTypes from "prop-types";
 import "./Dropdown.css";
-
 /**
  *
  * @param {string[]}  options - Return the options string in array
@@ -10,20 +9,19 @@ import "./Dropdown.css";
  * @param {number} width() - Returns the asset's intrinsic width in CSS pixels..
  * @returns JSX Element
  */
+
 const Dropdown = ({
   options = [],
   placeholder = "Select... ",
   width = "400px",
-  onSelect = () => {},
+  onSelect = () => {}
 }) => {
   const [selected, setSelected] = useState("");
   const [isActive, setIsActive] = useState(false);
   const ref = useRef(null);
-
   useEffect(() => {
     onSelect(selected);
   }, [selected]);
-
   useEffect(() => {
     /**
      * close options panel if clicked outside of the dropdown
@@ -32,9 +30,9 @@ const Dropdown = ({
       if (ref.current && !ref.current.contains(event.target)) {
         setIsActive(false);
       }
-    }
+    } // Bind the event listener
 
-    // Bind the event listener
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       // Unbind the event listener on clean up
@@ -42,48 +40,38 @@ const Dropdown = ({
     };
   }, [ref]);
 
-  const selectedStyle = (option) =>
-    option === selected
-      ? {
-          fontWeight: "bolder",
-        }
-      : {};
+  const selectedStyle = option => option === selected ? {
+    fontWeight: "bolder"
+  } : {};
 
-  return (
-    <div ref={ref} className="dropdown" style={{ width }}>
-      <div className="dropdown-btn" onClick={(e) => setIsActive(!isActive)}>
-        {selected ? (
-          <span>{selected}</span>
-        ) : (
-          <span className="select-text">{placeholder}</span>
-        )}
-
-        <FaChevronDown className="fachevrondown" />
-      </div>
-      {isActive && (
-        <div className="dropdown-content">
-          {options.map((option) => (
-            <div
-              onClick={(e) => {
-                setSelected(option);
-                setIsActive(false);
-              }}
-              className="dropdown-item"
-              style={selectedStyle(option)}
-              key={option}
-            >
-              {option}
-            </div>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+  return /*#__PURE__*/React.createElement("div", {
+    ref: ref,
+    className: "dropdown",
+    style: {
+      width
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "dropdown-btn",
+    onClick: e => setIsActive(!isActive)
+  }, selected ? /*#__PURE__*/React.createElement("span", null, selected) : /*#__PURE__*/React.createElement("span", {
+    className: "select-text"
+  }, placeholder), /*#__PURE__*/React.createElement(FaChevronDown, {
+    className: "fachevrondown"
+  })), isActive && /*#__PURE__*/React.createElement("div", {
+    className: "dropdown-content"
+  }, options.map(option => /*#__PURE__*/React.createElement("div", {
+    onClick: e => {
+      setSelected(option);
+      setIsActive(false);
+    },
+    className: "dropdown-item",
+    style: selectedStyle(option),
+    key: option
+  }, option))));
 };
 
 Dropdown.propTypes = {
   options: propTypes.array.isRequired,
-  placeholder: propTypes.string,
+  placeholder: propTypes.string
 };
-
 export default Dropdown;

@@ -3,5 +3,5 @@ import ReactDOM from "react-dom";
 import Dropdown from "./lib/Dropdown";
 
 const myData = ["Paris", "Nantes", "Toulouse"];
-ReactDOM.render(<Dropdown options={myData} />, document.getElementById("root"));
+ReactDOM.render(React.createElement(Dropdown, { options: myData }), document.getElementById("root"));
 export { Dropdown };

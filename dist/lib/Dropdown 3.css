@@ -46,9 +46,6 @@
   font-weight: 500;
   color: #333;
   width: 94.5%;
-  height: 200px;
-  overflow: auto;
-  z-index: 2;
 }
 
 .dropdown .dropdown-content .dropdown-item {
