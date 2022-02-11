@@ -1,7 +1,7 @@
 {
   "name": "dropdown-component-library",
   "author": "Eva Afriana",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "React component to easily create customizable dropdown",
   "license": "MIT",
   "private": false,
